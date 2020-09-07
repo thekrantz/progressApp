@@ -17,7 +17,7 @@ router.route('/add').post((req, res) => {
   const klaster = req.body.klaster;
   const rating = req.body.rating;
   const alamathotel = req.body.alamathotel;
-  const phone = Number(req.body.phone);
+  const phone = req.body.phone;
   
 
   const newExercise = new Exercise({

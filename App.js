@@ -11,6 +11,7 @@ import SensorScreen from './screens/SensorScreen';
 import CrudScreen from './screens/CrudScreen'
 import CustomDrawerContent from './screens/CustomDrawerContent';
 import DataCRUD from './screens/DataCRUD'
+import EditCRUD from './screens/EditCRUD'
 
 const Drawer = createDrawerNavigator();
 
@@ -23,6 +24,7 @@ render() {
                 <Drawer.Screen name="Sensor" component={SensorScreen}/>
                 <Drawer.Screen name="CRUD" component={CrudScreen}/>
                 <Drawer.Screen name="DataCRUD" component={DataCRUD}/>
+                <Drawer.Screen name="EditCRUD" component={EditCRUD}/>
             </Drawer.Navigator>
         </NavigationContainer>
     );

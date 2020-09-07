@@ -11,7 +11,7 @@ const exerciseSchema = new Schema({
   klaster: { type: String},
   rating: { type: String},
   alamathotel: { type: String},
-  phone: { type: Number},
+  phone: { type: String},
   
 }, {
   timestamps: true,

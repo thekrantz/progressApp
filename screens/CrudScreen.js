@@ -3,6 +3,8 @@ import {View, Text} from 'react-native';
 import axios from 'axios'
 
 import { Container, Header, Content, Form, Item, Input, Button } from 'native-base';
+import { NavigationContainer } from '@react-navigation/native'
+import { createStackNavigator } from '@react-navigation/stack'
 
 
 export default class CrudScreen extends Component {
@@ -77,8 +79,11 @@ export default class CrudScreen extends Component {
         }
 
         console.log(' Test ', exercises)
-        axios.post('http://192.168.1.29:5000/exercises/add', exercises)
-        .then(res => console.log(res.data))
+        axios.post('http://192.168.1.39:5000/exercises/add', exercises)
+        .then(res => 
+          console.log(res.data)
+        )
+        this.props.navigation.navigate('DataCRUD')
       }
 
   render() {
@@ -86,7 +91,7 @@ export default class CrudScreen extends Component {
     return(
     <Container>
         <Header>
-            <Text style={{marginTop: 13, fontSize: 30}}> CRUD </Text>
+            <Text style={{marginTop: 13, fontSize: 30}}> DATA HOTEL </Text>
         </Header>
         <Content>
           <Form>
