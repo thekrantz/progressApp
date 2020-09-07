@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { createDrawerNavigator } from '@react-navigation/drawer'
-import { NavigationContainer } from '@react-navigation/native'
+
 
 import HomeScreen from './HomeScreen';
 import SensorScreen from './SensorScreen';

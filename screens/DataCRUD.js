@@ -1,26 +1,18 @@
 import React ,{ Component } from 'react';
-import {View, Text, FlatList, StyleSheet, TouchableOpacity, TouchableHighlight, Modal, Alert, Button} from 'react-native';
+import {View, Text,  StyleSheet, TouchableOpacity, TouchableHighlight,Alert} from 'react-native';
 import axios from 'axios'
-
-import { Container, Header, Content, Form, Item, Input,  SwipeRow } from 'native-base';
-
-import { ListItem} from 'react-native-elements'
 import { SwipeListView } from 'react-native-swipe-list-view'
-
-
-
 
 
 export default class DataCRUD extends Component {
     constructor(props) {
         super(props);
             this.state = {
-                hotel: [],
+               
                 modalVisible: false,
             }
       }
      
-
       componentDidMount(){
         axios.get('http://192.168.1.39:5000/exercises/')
             .then(response => {
@@ -68,8 +60,7 @@ export default class DataCRUD extends Component {
               console.log(res);
               console.log(res.data);
         
-              // const hotel = this.state.hotel.filter(item => item.id !== id);
-              // this.setState({ hotel });
+              
               this.getdata()
             })
       
@@ -81,37 +72,12 @@ export default class DataCRUD extends Component {
      
     }
 
-    // componentDidUpdate(prevPros, prevState){
-    //   if (prevState.hotel !== this.state.hotel){
-    //     console.log('Ada Perubahan')
-
-    //   }
-    // }
+   
 
     
 
     keyExtractor = (item, index) => index.toString()
-    // renderItem = ({ item }) => (
-        
-    // )
-
-    // renderItem = ({ item }) => {
-    //     const text = `${item.namahotel}`
-    //     const addres = `${item.alamathotel}`;
-    //     // const rate = `${item.rating}`
-    //     console.log('skrtyy ', addres)
-    //     return (
-    //       <TouchableOpacity onPress={() => Alert.alert('Alamat ',{addres})}>
-    //         <Text  style={{ width: "100%", height: 30, backgroundColor: "white", fontSize: 20 }}>
-    //             {text} 
-    //         </Text>
-    //         <Text  style={{ width: "100%", height: 30, backgroundColor: "white", fontSize: 15 }}>
-    //             {addres} 
-    //         </Text>
-    //         <View style={{ width: "100%", height: 1, backgroundColor: "gray" }} />
-    //       </TouchableOpacity>
-    //     );
-    //   };
+   
 
     render(){
 
@@ -120,7 +86,7 @@ export default class DataCRUD extends Component {
         
         <View style={styles.container} >
           <View style={styles.header}>
-            <Text style={styles.txtHeader}> Daftar Hotel </Text>
+            <Text style={styles.txtHeader}> List Hotel </Text>
           </View>
             <SwipeListView
               keyExtractor={this.keyExtractor}
@@ -134,32 +100,12 @@ export default class DataCRUD extends Component {
                   style={styles.rowFront}
                   underlayColor={'#EEEEEE'}
                 >
-                  <View>
-                      <Text>{item.namahotel}</Text>
-                       {/* Modal */}  
-                        <Modal
-                          animationType="slide"
-                          transparent={true}
-                          visible={modalVisible}
-                          onRequestClose={() => {
-                            Alert.alert("Modal has been closed.");
-                          }}
-                        >
-                          <View style={styles.centeredView}>
-                            <View style={styles.modalView}>
-                              <Text style={styles.modalText}>Alamat : {item.alamathotel} {}</Text>
-
-                              <TouchableHighlight
-                                style={{ ...styles.openButton, backgroundColor: "#2196F3" }}
-                                onPress={() => {
-                                  this.setModalVisible(!modalVisible);
-                                }}
-                              >
-                                <Text style={styles.textStyle}>Close</Text>
-                              </TouchableHighlight>
-                            </View>
-                          </View>
-                        </Modal>
+                  <View style={styles.textData}>
+                      <Text style={styles.textTitle}>{item.namahotel}</Text>
+                      <Text style={styles.textDesc}>{item.alamathotel}</Text>
+                      <Text style={styles.textDesc}>{item.klaster}</Text>
+                      <Text style={styles.textDesc}>{item.phone}</Text>
+                      <Text style={styles.textDesc}>{item.rating}</Text>
                   </View>
                   
                 </TouchableHighlight>
@@ -167,7 +113,6 @@ export default class DataCRUD extends Component {
                )}
               renderHiddenItem={ ({item}) => (
                 <View style={styles.rowBack}>
-                  <Text>Left</Text>
                   <TouchableOpacity
                       style={[styles.backRightBtn, styles.backRightBtnLeft]}
                       onPress={() => this.props.navigation.navigate('EditCRUD',{
@@ -184,16 +129,12 @@ export default class DataCRUD extends Component {
                   </TouchableOpacity>
                 </View> 
               )}
-                leftOpenValue={75}
                 rightOpenValue={-150}
                 previewRowKey={'0'}
                 previewOpenValue={-40}
                 previewOpenDelay={3000}
            />
-              {/* <Button
-                title={"Refresh"}
-                onPress={() => { this.getdata() }}
-              /> */}
+              
           </View>
         )
     }
@@ -201,13 +142,25 @@ export default class DataCRUD extends Component {
 }
 
 const styles = StyleSheet.create({
+    textData: {
+      marginLeft: 10,
+    },
+    textTitle: {
+      fontSize:20,
+      fontWeight:"bold"
+    },
+    textDesc:{
+      marginLeft: 5,
+      color: "#999999"
+    },
+
     container: {
       backgroundColor: 'white',
       marginTop: 20,
          flex: 1,
     },
     txtHeader: {
-      fontSize: 20,
+      fontSize: 25,
       textAlign: 'center',
       margin: 10,
       color:'#fff'
@@ -215,7 +168,7 @@ const styles = StyleSheet.create({
     header: {
       marginTop:-20,
       height:60,
-      backgroundColor:'brown',
+      backgroundColor:'#e68a00',
       justifyContent:'center',
       alignItems:'center'
     },
@@ -239,12 +192,12 @@ const styles = StyleSheet.create({
         color: '#000',
     },
     rowFront: {
-        alignItems: 'center',
+        alignItems: 'flex-start',
         backgroundColor: '#ffffff',
         borderBottomColor: 'black',
         borderBottomWidth: 1,
         justifyContent: 'center',
-        height: 50,
+        height: 110,
     },
     rowBack: {
         alignItems: 'center',
@@ -263,11 +216,11 @@ const styles = StyleSheet.create({
         width: 75,
     },
     backRightBtnLeft: {
-        backgroundColor: '#efefef',
+        backgroundColor: '#ffe0b3',
         right: 75,
     },
     backRightBtnRight: {
-        backgroundColor: '#e5e5e5',
+        backgroundColor: '#fff5e6',
         right: 0,
     },
 

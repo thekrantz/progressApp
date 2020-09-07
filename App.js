@@ -1,6 +1,6 @@
 import React, { Component }  from 'react';
 import {
-    View, Text, StyleSheet, ScrollView, ImageBackground, Image
+ StyleSheet
 } from 'react-native'
 
 import { createDrawerNavigator } from '@react-navigation/drawer';

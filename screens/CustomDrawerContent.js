@@ -27,7 +27,7 @@ export default class CustomDrawerContent extends Component {
                         </View>
                         <Drawer.Section style={styles.drawerSection}>
                             <DrawerItem icon={({color,size}) =>(
-                                <Icon style={{ fontSize: 16 }} type="Ionicons" name="logo-react" size={2}/>
+                                <Icon style={{ fontSize: 16 }} type="Entypo" name="home" size={2}/>
                                 )}
                                 label="Home"
                                 onPress={() => this.props.navigation.navigate('Home')}
@@ -39,13 +39,13 @@ export default class CustomDrawerContent extends Component {
                                 onPress={() => this.props.navigation.navigate('Sensor')}
                             />
                              <DrawerItem icon={({color,size}) =>(
-                                <Icon style={{ fontSize: 16 }} type="Ionicons" name="logo-react" size={2}/>
+                                <Icon style={{ fontSize: 16 }} type="Ionicons" name="create" size={2}/>
                                 )}
                                 label="CRUD"
                                 onPress={() => this.props.navigation.navigate('CRUD')}
                             />
                             <DrawerItem icon={({color,size}) =>(
-                                <Icon style={{ fontSize: 16 }} type="Ionicons" name="logo-react" size={2}/>
+                                <Icon style={{ fontSize: 16 }} type="Entypo" name="list" size={2}/>
                                 )}
                                 label="DataCRUD"
                                 onPress={() => this.props.navigation.navigate('DataCRUD')}
@@ -54,12 +54,7 @@ export default class CustomDrawerContent extends Component {
                     </View>
                 </DrawerContentScrollView>
                 <Drawer.Section style={styles.bottomDrawerSection}>
-                    <DrawerItem icon={({color,size}) =>(
-                        <Icon style={{ fontSize: 16 }} type="Ionicons" name="logo-react" size={2}/>
-                        )}
-                        label="Test"
-                        onPress={() => {}}
-                     />
+                    
                 </Drawer.Section>
             </View>
       )
