@@ -24,7 +24,7 @@ export default class EditCRUD extends Component {
       }
 
       componentDidMount(){
-        axios.get('http://192.168.1.37:5000/exercises/'+this.props.route.params.itemId)
+        axios.get('http://192.168.1.39:5000/exercises/'+this.props.route.params.itemId)
         .then(response => {
             this.setState({
                 namahotel: response.data.namahotel,
